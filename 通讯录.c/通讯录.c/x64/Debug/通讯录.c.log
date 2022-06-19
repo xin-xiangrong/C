@@ -1,0 +1,5 @@
+﻿  contact.c
+D:\bit\C语言\c-language\通讯录.c\通讯录.c\contact.c(29,1): warning C4010: 单行注释包含行继续符
+D:\bit\C语言\c-language\通讯录.c\通讯录.c\contact.c(30,1): warning C4010: 单行注释包含行继续符
+D:\bit\C语言\c-language\通讯录.c\通讯录.c\contact.c(78): warning C4715: “CheckCapacity”: 不是所有的控件路径都返回值
+  通讯录.c.vcxproj -> D:\bit\C语言\c-language\通讯录.c\x64\Debug\通讯录.c.exe
