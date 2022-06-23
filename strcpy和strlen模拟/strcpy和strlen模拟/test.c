@@ -22,7 +22,7 @@
 //	char arr1[20] = { 0 };
 //	char arr2[] = "hello world";
 //
-//	printf("%s\n", my_strcpy(arr1, arr2));
+//	printf("%s\n", my_strcpy(arr1, arr2)); 
 //	return 0;
 //}
 
