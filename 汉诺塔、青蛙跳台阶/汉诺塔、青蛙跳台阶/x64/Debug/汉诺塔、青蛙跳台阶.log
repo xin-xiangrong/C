@@ -1,0 +1,3 @@
+﻿  test.c
+D:\bit\C语言\c-language\汉诺塔、青蛙跳台阶\汉诺塔、青蛙跳台阶\test.c(51): warning C4715: “Count_hannoi”: 不是所有的控件路径都返回值
+  汉诺塔、青蛙跳台阶.vcxproj -> D:\bit\C语言\c-language\汉诺塔、青蛙跳台阶\x64\Debug\汉诺塔、青蛙跳台阶.exe
