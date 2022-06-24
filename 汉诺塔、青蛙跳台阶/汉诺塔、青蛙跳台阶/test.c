@@ -36,7 +36,7 @@ void Hannoi(int n, char A, char B, char C)
 	if (n > 1)
 	{
 		Hannoi(n - 1, A, C, B);
-		printf("%c->%c ", A, C);
+		printf("%c->%c ", A, C); 
 		Hannoi(n - 1, B, A, C);
 	}
 
