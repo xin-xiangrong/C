@@ -1,0 +1,6 @@
+﻿  test.c
+D:\bit\C语言\c-language\指针进阶\指针进阶\test.c(232,6): error C2374: “ret”: 重定义；多次初始化
+D:\bit\C语言\c-language\指针进阶\指针进阶\test.c(231): message : 参见“ret”的声明
+D:\bit\C语言\c-language\指针进阶\指针进阶\test.c(233,6): error C2374: “ret”: 重定义；多次初始化
+D:\bit\C语言\c-language\指针进阶\指针进阶\test.c(231): message : 参见“ret”的声明
+D:\bit\C语言\c-language\指针进阶\指针进阶\test.c(235,2): warning C4013: “printf”未定义；假设外部返回 int
