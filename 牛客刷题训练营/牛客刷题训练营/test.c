@@ -541,3 +541,111 @@ int main()
     }
     return 0;
 }
+
+////BC53 计算一元二次方程
+//#include<stdio.h>
+//#include<math.h>
+//int main()
+//{
+//    float a = 0;
+//    float b = 0;
+//    float c = 0;
+//    while (scanf("%f%f%f", &a, &b, &c) == 3)
+//    {
+//        if (a == 0)
+//        {
+//            printf("Not quadratic equation\n");
+//        }
+//        else
+//        {
+//            float t = b * b - 4 * a * c;
+//            if (t == 0)
+//            {
+//                printf("x1=x2=%.2f\n", ((-b) + sqrt(t)) / (2 * a) + 0);
+//            }
+//            else if (t > 0)
+//            {
+//                printf("x1=%.2f;x2=%.2f\n", ((-b) - sqrt(t)) / (2 * a),
+//                    ((-b) + sqrt(t)) / (2 * a));
+//            }
+//            else
+//            {
+//                if (a > 0)
+//                {
+//                    printf("x1=%.2f-%.2fi;x2=%.2f+%.2fi\n", (-b) / (2 * a), sqrt(-t) / (2 * a),
+//                        (-b) / (2 * a), sqrt(-t) / (2 * a));
+//                }
+//                if (a < 0)
+//                {
+//                    printf("x1=%.2f-%.2fi;x2=%.2f+%.2fi\n", (-b) / (2 * a), (-1) * sqrt(-t) / (2 * a),
+//                        (-b) / (2 * a), (-1) * sqrt(-t) / (2 * a));
+//                }
+//            }
+//        }
+//    }
+//
+//    return 0;
+//}
+
+
+//BC55 简单计算器
+#include<stdio.h>
+
+double Add(double x, double y)
+{
+    return x + y;
+}
+double Sub(double x, double y)
+{
+    return x - y;
+}
+double Mul(double x, double y)
+{
+    return x * y;
+}
+double Div(double x, double y)
+{
+    return x / y;
+}
+void cacl(double (*fp)(double, double), double a, double b, char ch)
+{
+    double ret = fp(a, b);
+    printf("%.4lf%c%.4lf=%.4f", a, ch, b, ret);
+}
+
+int main()
+{
+    double a = 0;
+    double b = 0;
+    char ch = 0;
+    scanf("%lf%c%lf", &a, &ch, &b);
+    if (ch == '+')
+    {
+        cacl(Add, a, b, ch);
+    }
+    if (ch == '-')
+    {
+        cacl(Sub, a, b, ch);
+    }
+    if (ch == '*')
+    {
+        cacl(Mul, a, b, ch);
+    }
+    if (ch == '/')
+    {
+        if (b == 0)
+        {
+            printf("Wrong!Division by zero!");
+        }
+        else
+        {
+            cacl(Div, a, b, ch);
+        }
+    }
+    if (ch != '+' && ch != '-' && ch != '*' && ch != '/')
+    {
+        printf("Invalid operation!");
+    }
+
+    return 0;
+}
