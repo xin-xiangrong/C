@@ -110,3 +110,48 @@ int main()
 
 	return 0;
 }
+
+
+//模拟实现memmove
+#include<stdio.h>
+#include<assert.h>
+
+void* My_memmove(void* dest, const void* src, int num)
+{
+	assert(dest && src);
+	void* ret = dest;
+	if (dest < src)
+	{
+		//从前往后放
+		while (num)
+		{
+			*(char*)dest = *(char*)src;
+			dest = (char*)dest + 1;
+			src = (char*)src + 1;
+		}
+	}
+	else
+	{
+		//从后往前放
+		while (num--)
+		{
+			*((char*)dest + num) = *((char*)src + num);
+		}
+	}
+
+	return ret;
+}
+
+int main()
+{
+	int arr[10] = { 1, 2, 3, 4, 5, 6, 7,8,9,10 };
+	My_memmove(arr + 2, arr, 20);
+
+	int i = 0;
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	return 0;
+}
