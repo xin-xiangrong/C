@@ -178,3 +178,18 @@ int main()
 	return 0;
 }
 
+//方法1
+typedef struct Node
+{
+	int data;
+	struct Node* next;
+}* linklist;
+
+//方法2
+struct Node
+{
+	int data;
+	struct Node* next;
+};
+typedef struct Node* linklist;
+
