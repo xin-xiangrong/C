@@ -193,3 +193,182 @@ struct Node
 };
 typedef struct Node* linklist;
 
+
+//#include<stdio.h>
+//#include<stddef.h>
+//struct S1
+//{
+//	char c1;
+//	int i;
+//	char c2;
+//};
+//
+//int main()
+//{
+//	struct S1 s1;
+//
+//	printf("%d\n", offsetof(struct S1, c1));
+//	printf("%d\n", offsetof(struct S1, i));
+//	printf("%d\n", offsetof(struct S1, c2));
+//	return 0;
+//}
+
+
+//enum Day//星期
+//{
+//	Mon,
+//	Tues,
+//	Wed,
+//	Thur,
+//	Fri,
+//	Sat,
+//	Sun
+//};
+//enum Sex//性别
+//{
+//	MALE,
+//	FEMALE,
+//	SECRET
+//};
+//enum Color//颜色
+//{
+//	RED,
+//	GREEN,
+//	BLUE
+//};
+//
+//
+//enum Color//颜色
+//{
+//	RED = 1,
+//	GREEN = 2,
+//	BLUE = 4
+//};
+
+//#include<stdio.h>
+//enum Day//星期
+//{
+//	//枚举常量
+//	Mon=1,
+//	Tues,
+//	Wed,
+//	Thur,
+//	Fri,
+//	Sat,
+//	Sun
+//};
+//
+//
+//int main()
+//{
+//	printf("%d\n", Mon);
+//	printf("%d\n", Tues);
+//	printf("%d\n", Wed);
+//	printf("%d\n", Thur);
+//	printf("%d\n", Fri);
+//	printf("%d\n", Sat);
+//	printf("%d\n", Sun);
+//
+//	return 0;
+//}
+
+//enum Color//颜色
+//{
+//	RED = 1,
+//	GREEN = 2,
+//	BLUE = 4
+//};
+//enum Color clr = GREEN;
+////只能拿枚举常量给枚举变量赋值，才不会出现类型的差异。
+//clr = 5;
+////这种赋值方法是错误的，类型不匹配
+////在有严格的类型检查环境中是会报错的
+
+
+////联合类型的声明
+//#include<stdio.h>
+//union Un
+//{
+//	char c;
+//	int i;
+//};
+//
+//int main()
+//{
+//	//联合变量的定义
+//	union Un un;
+//	//计算联合变量的大小
+//	printf("%d\n", sizeof(un));
+//
+//	return 0;
+//}
+
+//#include<stdio.h>
+//union Un
+//{
+//	int i;
+//	char c;
+//};
+//
+//int main()
+//{
+//	union Un un;
+//	// 下面输出的结果是一样的
+//	printf("%d\n", &(un.i));
+//	printf("%d\n", &(un.c));
+//	//改变c的同时会将i也改变
+//	un.i = 0x11223344;
+//	un.c = 0x55;
+//	printf("%x\n", un.i);
+//
+//	return 0;
+//}
+
+
+
+//#include<stdio.h>
+//int check_sys()
+//{
+//	union
+//	{
+//		char c;
+//		int i;
+//	}u;
+//	u.i = 1;
+//	//返回1是小端，返回0是大端
+//	return u.c;
+//}
+//
+//int main()
+//{
+//	//低-------> 高
+//	//01 00 00 00 -- 小端
+//	//00 00 00 01 -- 大端
+//	int ret = check_sys();
+//	if (ret == 1)
+//		printf("小端\n");
+//	else
+//		printf("大端\n");
+//
+//	return 0;
+//}
+
+#include<stdio.h>
+union Un1
+{
+	char c[5];
+	int i;
+};
+union Un2
+{
+	short c[7];
+	int i;
+};
+int main()
+{
+	printf("%d\n", sizeof(union Un1));
+	printf("%d\n", sizeof(union Un2));
+	
+	return 0;
+}
+
