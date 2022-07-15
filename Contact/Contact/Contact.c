@@ -90,7 +90,7 @@ void AddContact(Contact* pc)
 
 void DestroyContact(Contact* pc)
 {
-	assert(NULL);
+	assert(pc);
 	free(pc->data);
 	pc->data = NULL;
 }
