@@ -7,7 +7,7 @@ void menu()
 	printf("--------------------------------\n");
 	printf("      1.add        2.del\n");
 	printf("      3.search     4.modify\n");
-	printf("      5.show       6.empty\n");
+	printf("      5.show       6.Clear\n");
 	printf("      7.sort       0.exit\n");
 	printf("--------------------------------\n");
 
@@ -42,13 +42,14 @@ int main()
 			case SHOW:
 				ShowContact(&con);
 				break;
-			case EMPTY:
-				EmptyContact(&con);
+			case CLEAR:
+				ClearContact(&con);
 				break;
 			case SORT:
 				SortContact(&con);
 				break;
 			case EXIT:
+				SaveContact(&con);
 				DestroyContact(&con);
 				printf("ÍË³ö³É¹¦\n");
 				break;
@@ -62,4 +63,3 @@ int main()
 	
 	return 0;
 }
-

@@ -24,7 +24,7 @@ enum Optint
 	SEARCH,
 	MODIFY,
 	SHOW,
-	EMPTY,
+	CLEAR,
 	SORT
 };
 
@@ -43,7 +43,7 @@ typedef struct Person
 ////静态版本
 //typedef struct Contact
 //{
-//	 Person data[MAX_DATA];//存放人的信息
+//	Person data[MAX_DATA];//存放人的信息
 //	int count;
 //
 //}Contact;
@@ -70,10 +70,13 @@ void ModifyContact(Contact* pc);
 //显示联系人
 void ShowContact(Contact* pc);
 //清空联系人
-void EmptyContact(Contact* pc);
+void ClearContact(Contact* pc);
 //排序联系人
 void SortContact(Contact* pc);
 //释放通讯录动态内存
 void DestroyContact(Contact* pc);
-
+//保存通讯录的信息到文件
+void SaveContact(Contact* pc);
+//加载文件中的信息到通讯录
+void LoadContact(Contact* pc);
 

@@ -5,7 +5,6 @@
 //void InitContact(Contact* pc)
 //{
 //	assert(pc);
-//	int i = 0;
 //	pc->count = 0;
 //	memset(pc->data, 0, sizeof(pc->data));
 //}
@@ -34,6 +33,26 @@
 //
 //}
 
+void CheckCapacity(Contact* pc)
+{
+	if (pc->capacity == pc->count)
+	{
+		Person* prt = (Person*)realloc(pc->data, (pc->capacity + INCREASE_SZ) * sizeof(Person));
+		if (NULL == prt)
+		{
+			printf("AddContact: :%s\n", strerror(errno));
+			return;
+		}
+		else
+		{
+			pc->data = prt;
+			pc->capacity += INCREASE_SZ;
+			printf("增容成功\n");
+		}
+	}
+}
+
+
 //动态版本
 void InitContact(Contact* pc)
 {
@@ -46,26 +65,34 @@ void InitContact(Contact* pc)
 		return;
 	}
 	pc->capacity = DEFAULT_SZ;
+	//加载文件中的信息到通讯录
+	LoadContact(pc);
 }
 
-void CheckCapacity(Contact* pc)
+void LoadContact(Contact* pc)
 {
-	if (pc->capacity == pc->count)
+	assert(pc);
+	FILE* pfRead = fopen("Contact.txt", "rb");
+	if (pfRead == NULL)
 	{
-		Person* prt = (Person*)realloc(pc->data, pc->capacity + INCREASE_SZ * sizeof(Person));
-		if (NULL == prt)
-		{
-			printf("AddContact: :%s\n", strerror(errno));
-			return;
-		}
-		else
-		{
-			pc->data = prt;
-			pc->capacity +=INCREASE_SZ;
-			printf("增容成功\n");
-		}
+		perror("LoadContact");
+		return;
 	}
+	Person tmp = { 0 };
+
+	while (fread(&tmp, sizeof(Person), 1, pfRead) == 1)
+	{
+		CheckCapacity(pc);
+
+		pc->data[pc->count] = tmp;
+		pc->count++;
+	}
+
+	fclose(pfRead);
+	pfRead = NULL;
 }
+
+
 
 void AddContact(Contact* pc)
 {
@@ -73,6 +100,7 @@ void AddContact(Contact* pc)
 
 	//增容
 	CheckCapacity(pc);
+
 	printf("请输入姓名:>");
 	scanf("%s", pc->data[pc->count].name);
 	printf("请输入年龄:>");
@@ -215,10 +243,26 @@ void ModifyContact(Contact* pc)
 
 }
 
-void EmptyContact(Contact* pc)
+//void ClearContact(Contact* pc)
+//{
+//	assert(pc);
+//	InitContact(pc);
+//	printf("清空成功\n");
+//}
+
+void ClearContact(Contact* pc)
 {
 	assert(pc);
-	InitContact(pc);
+	//删除文件
+	if (remove("Contact.txt") == -1)
+	{
+		perror("ClearContact");
+		return;
+	}
+
+	pc->count = 0;
+	memset(pc->data, 0, sizeof(Person)*(pc->count));
+
 	printf("清空成功\n");
 }
 
@@ -234,6 +278,22 @@ void SortContact(Contact* pc)
 	ShowContact(pc);
 }
 
+void SaveContact(Contact* pc)
+{
+	assert(pc);
+	FILE* pfWrite = fopen("Contact.txt", "wb");
+	if (pfWrite == NULL)
+	{
+		perror("SaveContact");
+		return;
+	}
+	//以二进制的形式写入文件
+	int i = 0;
+	for (i = 0; i < pc->count; i++)
+	{
+		fwrite(pc->data + i, sizeof(Person), 1, pfWrite);
+	}
 
-
-
+	fclose(pfWrite);
+	pfWrite = NULL;
+}
