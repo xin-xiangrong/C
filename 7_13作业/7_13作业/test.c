@@ -265,3 +265,15 @@ int main()
 
 	return 0;
 }
+
+
+//#include<stdio.h>
+//#include<stdlib.h>
+//
+//int main()
+//{
+//	int ret = atoi("-123ab456");
+//
+//	printf("%d\n", ret);
+//	return 0;
+//}
